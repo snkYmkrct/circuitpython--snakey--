@@ -33,6 +33,10 @@
 #include "stm32h7/stm32h743xx/clocks.h"
 #endif
 
+#ifdef STM32H750xx
+#include "stm32h7/stm32h750xx/clocks.h"
+#endif
+
 void stm32_peripherals_clocks_init(void) {
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
     RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
