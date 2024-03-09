@@ -24,22 +24,32 @@
  * THE SOFTWARE.
  */
 
-// Micropython setup
+#ifndef MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H743XX_PERIPH_H
+#define MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H743XX_PERIPH_H
 
-#define MICROPY_HW_BOARD_NAME       "DAISY_SEED"
-#define MICROPY_HW_MCU_NAME         "STM32H750xx"
+// I2C
+extern I2C_TypeDef *mcu_i2c_banks[4];
 
-#define FLASH_PAGE_SIZE             (0x4000)
+extern const mcu_periph_obj_t mcu_i2c_sda_list[12];
+extern const mcu_periph_obj_t mcu_i2c_scl_list[12];
 
-// H7 and F7 MPU definitions
-#define CPY_FLASH_REGION_SIZE   ARM_MPU_REGION_SIZE_2MB
-#define CPY_ITCM_REGION_SIZE    ARM_MPU_REGION_SIZE_64KB
-#define CPY_DTCM_REGION_SIZE    ARM_MPU_REGION_SIZE_128KB
-#define CPY_SRAM_REGION_SIZE    ARM_MPU_REGION_SIZE_512KB
-#define CPY_SRAM_SUBMASK        0x00
-#define CPY_SRAM_START_ADDR     0x24000000
+// SPI
+extern SPI_TypeDef *mcu_spi_banks[6];
 
-#define HSE_VALUE ((uint32_t)8000000)
-#define LSE_VALUE ((uint32_t)32768)
-#define BOARD_HSE_SOURCE (RCC_HSE_BYPASS) // ST boards use the STLink clock signal
-#define BOARD_HAS_LOW_SPEED_CRYSTAL (1)
+extern const mcu_periph_obj_t mcu_spi_sck_list[19];
+extern const mcu_periph_obj_t mcu_spi_mosi_list[19];
+extern const mcu_periph_obj_t mcu_spi_miso_list[16];
+
+// UART
+extern USART_TypeDef *mcu_uart_banks[MAX_UART];
+extern bool mcu_uart_has_usart[MAX_UART];
+
+extern const mcu_periph_obj_t mcu_uart_tx_list[25];
+extern const mcu_periph_obj_t mcu_uart_rx_list[26];
+
+// Timers
+#define TIM_BANK_ARRAY_LEN 14
+#define TIM_PIN_ARRAY_LEN 58
+extern TIM_TypeDef *mcu_tim_banks[TIM_BANK_ARRAY_LEN];
+
+#endif // MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H743XX_PERIPH_H

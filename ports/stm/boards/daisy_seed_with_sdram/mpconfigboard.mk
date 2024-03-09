@@ -6,8 +6,8 @@ USB_MANUFACTURER = "STMicroelectronics"
 INTERNAL_FLASH_FILESYSTEM = 1
 
 MCU_SERIES = H7
-MCU_VARIANT = STM32H750IBxx
-MCU_PACKAGE = UFBGA176  --- todo  add it to pins.c
+MCU_VARIANT = STM32H750xx
+MCU_PACKAGE = UFBGA176
 
 LD_COMMON = boards/common_tcm.ld
-LD_FILE = boards/STM32H750_fs.ld  --- todo  from lib de daisy
+LD_FILE = boards/STM32H750IB_flash.lds

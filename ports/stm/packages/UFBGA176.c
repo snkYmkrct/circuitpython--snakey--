@@ -88,7 +88,7 @@ STATIC const mp_rom_map_elem_t mcu_pin_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR_PA10), MP_ROM_PTR(&pin_PA10) },
 
 // Row E
-    { MP_ROM_QSTR(MP_QSTR_PC14), MP_ROM_PTR(&pin_PC14) },
+//  { MP_ROM_QSTR(MP_QSTR_PC14), MP_ROM_PTR(&pin_PC14) },
     { MP_ROM_QSTR(MP_QSTR_PF00), MP_ROM_PTR(&pin_PF00) },
     { MP_ROM_QSTR(MP_QSTR_PI10), MP_ROM_PTR(&pin_PI10) },
     { MP_ROM_QSTR(MP_QSTR_PI11), MP_ROM_PTR(&pin_PI11) },
@@ -98,21 +98,21 @@ STATIC const mp_rom_map_elem_t mcu_pin_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR_PA09), MP_ROM_PTR(&pin_PA09) },
 
 // Row F
-    { MP_ROM_QSTR(MP_QSTR_PC15), MP_ROM_PTR(&pin_PC15) },
+//  { MP_ROM_QSTR(MP_QSTR_PC15), MP_ROM_PTR(&pin_PC15) },
     { MP_ROM_QSTR(MP_QSTR_PH02), MP_ROM_PTR(&pin_PH02) },
     { MP_ROM_QSTR(MP_QSTR_PC09), MP_ROM_PTR(&pin_PC09) },
     { MP_ROM_QSTR(MP_QSTR_PA08), MP_ROM_PTR(&pin_PA08) },
 
 // Row G
-    { MP_ROM_QSTR(MP_QSTR_PH00), MP_ROM_PTR(&pin_PH00) },
+//  { MP_ROM_QSTR(MP_QSTR_PH00), MP_ROM_PTR(&pin_PH00) },
     { MP_ROM_QSTR(MP_QSTR_PH03), MP_ROM_PTR(&pin_PH03) },
     { MP_ROM_QSTR(MP_QSTR_PC08), MP_ROM_PTR(&pin_PC08) },
     { MP_ROM_QSTR(MP_QSTR_PC07), MP_ROM_PTR(&pin_PC07) },
 
 // Row H
-    { MP_ROM_QSTR(MP_QSTR_PH01), MP_ROM_PTR(&pin_PH01) },
+//  { MP_ROM_QSTR(MP_QSTR_PH01), MP_ROM_PTR(&pin_PH01) },
     { MP_ROM_QSTR(MP_QSTR_PF02), MP_ROM_PTR(&pin_PF02) },
-    { MP_ROM_QSTR(MP_QSTR_PF01), MP_ROM_PTR(&pin_PE01) },
+    { MP_ROM_QSTR(MP_QSTR_PF01), MP_ROM_PTR(&pin_PF01) },
     { MP_ROM_QSTR(MP_QSTR_PH04), MP_ROM_PTR(&pin_PH04) },
     { MP_ROM_QSTR(MP_QSTR_PG08), MP_ROM_PTR(&pin_PG08) },
     { MP_ROM_QSTR(MP_QSTR_PC06), MP_ROM_PTR(&pin_PC06) },
@@ -145,8 +145,8 @@ STATIC const mp_rom_map_elem_t mcu_pin_globals_table[] = {
 // Row M
     { MP_ROM_QSTR(MP_QSTR_PC00), MP_ROM_PTR(&pin_PC00) },
     { MP_ROM_QSTR(MP_QSTR_PC01), MP_ROM_PTR(&pin_PC01) },
-    { MP_ROM_QSTR(MP_QSTR_PC02C), MP_ROM_PTR(&pin_PC02C) },
-    { MP_ROM_QSTR(MP_QSTR_PC03C), MP_ROM_PTR(&pin_PC03C) },
+//  { MP_ROM_QSTR(MP_QSTR_PC02C), MP_ROM_PTR(&pin_PC02C) },
+//  { MP_ROM_QSTR(MP_QSTR_PC03C), MP_ROM_PTR(&pin_PC03C) },
     { MP_ROM_QSTR(MP_QSTR_PB02), MP_ROM_PTR(&pin_PB02) },
     { MP_ROM_QSTR(MP_QSTR_PG01), MP_ROM_PTR(&pin_PG01) },
     { MP_ROM_QSTR(MP_QSTR_PH06), MP_ROM_PTR(&pin_PH06) },

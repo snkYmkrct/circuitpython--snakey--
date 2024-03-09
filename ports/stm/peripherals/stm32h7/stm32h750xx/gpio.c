@@ -1,5 +1,5 @@
 /*
- * This file is part of the MicroPython project, http://micropython.org/
+ * This file is part of the Micro Python project, http://micropython.org/
  *
  * The MIT License (MIT)
  *
@@ -24,22 +24,19 @@
  * THE SOFTWARE.
  */
 
-// Micropython setup
+#include "gpio.h"
+#include "common-hal/microcontroller/Pin.h"
 
-#define MICROPY_HW_BOARD_NAME       "DAISY_SEED"
-#define MICROPY_HW_MCU_NAME         "STM32H750xx"
+void stm32_peripherals_gpio_init(void) {
+    // Enable all GPIO for now
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_GPIOF_CLK_ENABLE();
+    __HAL_RCC_GPIOG_CLK_ENABLE();
+    __HAL_RCC_GPIOH_CLK_ENABLE();
+    __HAL_RCC_GPIOI_CLK_ENABLE();    
 
-#define FLASH_PAGE_SIZE             (0x4000)
-
-// H7 and F7 MPU definitions
-#define CPY_FLASH_REGION_SIZE   ARM_MPU_REGION_SIZE_2MB
-#define CPY_ITCM_REGION_SIZE    ARM_MPU_REGION_SIZE_64KB
-#define CPY_DTCM_REGION_SIZE    ARM_MPU_REGION_SIZE_128KB
-#define CPY_SRAM_REGION_SIZE    ARM_MPU_REGION_SIZE_512KB
-#define CPY_SRAM_SUBMASK        0x00
-#define CPY_SRAM_START_ADDR     0x24000000
-
-#define HSE_VALUE ((uint32_t)8000000)
-#define LSE_VALUE ((uint32_t)32768)
-#define BOARD_HSE_SOURCE (RCC_HSE_BYPASS) // ST boards use the STLink clock signal
-#define BOARD_HAS_LOW_SPEED_CRYSTAL (1)
+}
