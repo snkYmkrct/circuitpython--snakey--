@@ -152,4 +152,11 @@ typedef struct {
 #include "stm32h7/stm32h743xx/periph.h"
 #endif
 
+#ifdef STM32H750xx
+#define HAS_DAC 0
+#define HAS_TRNG 0
+#define HAS_BASIC_TIM 0
+#include "stm32h7/stm32h750xx/periph.h"
+#endif
+
 #endif // __MICROPY_INCLUDED_STM32_PERIPHERALS_PERIPH_H__

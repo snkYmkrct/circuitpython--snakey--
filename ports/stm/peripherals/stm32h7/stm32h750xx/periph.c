@@ -30,7 +30,7 @@
 #include "peripherals/periph.h"
 
 // I2C
-/* 
+
 I2C_TypeDef *mcu_i2c_banks[4] = {I2C1, I2C2, I2C3, I2C4};
 
 const mcu_periph_obj_t mcu_i2c_sda_list[12] = {
@@ -258,4 +258,3 @@ const mcu_tim_pin_obj_t mcu_tim_pin_list[58] = {
     TIM(8, 3, 3, &pin_PK00),
     TIM(1, 1, 1, &pin_PK01),
 };
- */
