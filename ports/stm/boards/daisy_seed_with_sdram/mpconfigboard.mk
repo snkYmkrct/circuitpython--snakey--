@@ -10,4 +10,4 @@ MCU_VARIANT = STM32H750xx
 MCU_PACKAGE = UFBGA176
 
 LD_COMMON = boards/common_tcm.ld
-LD_FILE = boards/STM32H750IB_flash.lds
+LD_FILE = boards/STM32H750_fs.ld
