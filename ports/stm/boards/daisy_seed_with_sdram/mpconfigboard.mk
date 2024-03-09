@@ -1,0 +1,13 @@
+USB_VID = 0x0483
+USB_PID = 0x5740
+USB_PRODUCT = "Daisy Seed"
+USB_MANUFACTURER = "STMicroelectronics"
+
+INTERNAL_FLASH_FILESYSTEM = 1
+
+MCU_SERIES = H7
+MCU_VARIANT = STM32H750IBxx
+MCU_PACKAGE = UFBGA176  --- todo  add it to pins.c
+
+LD_COMMON = boards/common_tcm.ld
+LD_FILE = boards/STM32H750_fs.ld  --- todo  from lib de daisy
