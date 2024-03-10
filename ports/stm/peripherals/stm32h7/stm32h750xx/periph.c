@@ -86,7 +86,7 @@ const mcu_periph_obj_t mcu_spi_sck_list[19] = {
     PERIPH(6, 5, &pin_PG13),
     PERIPH(5, 5, &pin_PH06),
     PERIPH(2, 5, &pin_PI01),
-    PERIPH(5, 5, &pin_PK00),
+    PERIPH(5, 5, &pin_PI00),
 };
 
 const mcu_periph_obj_t mcu_spi_mosi_list[19] = {
@@ -108,7 +108,7 @@ const mcu_periph_obj_t mcu_spi_mosi_list[19] = {
     PERIPH(5, 5, &pin_PF11),
     PERIPH(6, 5, &pin_PG14),
     PERIPH(2, 5, &pin_PI03),
-    PERIPH(5, 5, &pin_PJ10),
+    PERIPH(5, 5, &pin_PI10),
 };
 
 const mcu_periph_obj_t mcu_spi_miso_list[16] = {
@@ -127,7 +127,7 @@ const mcu_periph_obj_t mcu_spi_miso_list[16] = {
     PERIPH(6, 5, &pin_PG12),
     PERIPH(5, 5, &pin_PH07),
     PERIPH(2, 5, &pin_PI02),
-    PERIPH(5, 5, &pin_PJ11),
+    PERIPH(5, 5, &pin_PI11),
 };
 
 // UART
@@ -159,8 +159,8 @@ const mcu_periph_obj_t mcu_uart_tx_list[25] = {
     PERIPH(7, 7, &pin_PE08),
     PERIPH(7, 7, &pin_PF07),
     PERIPH(6, 7, &pin_PG14),
-    PERIPH(4, 8, &pin_PH13),
-    PERIPH(8, 8, &pin_PJ08),
+    PERIPH(4, 8, &pin_PI13),
+    PERIPH(8, 8, &pin_PI08),
 };
 
 const mcu_periph_obj_t mcu_uart_rx_list[26] = {
@@ -187,9 +187,9 @@ const mcu_periph_obj_t mcu_uart_rx_list[26] = {
     PERIPH(7, 7, &pin_PE07),
     PERIPH(7, 7, &pin_PF06),
     PERIPH(6, 7, &pin_PG09),
-    PERIPH(4, 8, &pin_PH14),
+    PERIPH(4, 8, &pin_PI14),
     PERIPH(4, 8, &pin_PI09),
-    PERIPH(8, 8, &pin_PJ09),
+    PERIPH(8, 8, &pin_PI09),
 };
 
 // Timers
@@ -242,19 +242,19 @@ const mcu_tim_pin_obj_t mcu_tim_pin_list[58] = {
     TIM(1, 1, 2, &pin_PE11),
     TIM(1, 1, 3, &pin_PE13),
     TIM(1, 1, 4, &pin_PE14),
-    TIM(5, 2, 1, &pin_PH10),
-    TIM(5, 2, 2, &pin_PH11),
-    TIM(5, 2, 3, &pin_PH12),
+    TIM(5, 2, 1, &pin_PI10),
+    TIM(5, 2, 2, &pin_PI11),
+    TIM(5, 2, 3, &pin_PI12),
     TIM(5, 2, 4, &pin_PI00),
     TIM(8, 3, 4, &pin_PI02),
     TIM(8, 3, 1, &pin_PI05),
     TIM(8, 3, 2, &pin_PI06),
     TIM(8, 3, 3, &pin_PI07),
-    TIM(8, 3, 2, &pin_PJ06),
-    TIM(8, 3, 1, &pin_PJ08),
-    TIM(1, 1, 3, &pin_PJ09),
-    TIM(8, 3, 2, &pin_PJ10),
-    TIM(1, 1, 2, &pin_PJ11),
-    TIM(8, 3, 3, &pin_PK00),
-    TIM(1, 1, 1, &pin_PK01),
+    TIM(8, 3, 2, &pin_PI06),
+    TIM(8, 3, 1, &pin_PI08),
+    TIM(1, 1, 3, &pin_PI09),
+    TIM(8, 3, 2, &pin_PI10),
+    TIM(1, 1, 2, &pin_PI11),
+    TIM(8, 3, 3, &pin_PI00),
+    TIM(1, 1, 1, &pin_PI01),
 };
