@@ -10,10 +10,10 @@ _ld_default_stack_size = 24K;
 /* Specify the memory areas */
 MEMORY
 {
-    FLASH (rx)          : ORIGIN = 0x08000000, LENGTH = 2048K
-    FLASH_ISR (rx)      : ORIGIN = 0x08000000, LENGTH = 128K    /* sector 0, 128K */
-    FLASH_FS (r)        : ORIGIN = 0x08020000, LENGTH = 384K    /* sector 1-3, 128K */
-    FLASH_FIRMWARE (rx) : ORIGIN = 0x08080000, LENGTH = 1536K   /* sectors 4*128 + 8*128 */
+    FLASH (rx)          : ORIGIN = 0x08000000, LENGTH = 128K
+    FLASH_ISR (rx)      : ORIGIN = 0x08000000, LENGTH = 4K    /* sector 0, 128K */
+    FLASH_FS (r)        : ORIGIN = 0x08020000, LENGTH = 4K    /* sector 1-3, 128K */
+    FLASH_FIRMWARE (rx) : ORIGIN = 0x08080000, LENGTH = 128K   /* sectors 4*128 + 8*128 */
     DTCM (xrw)          : ORIGIN = 0x20000000, LENGTH = 128K
     RAM (xrw)           : ORIGIN = 0x24000000, LENGTH = 512K    /* AXI SRAM */
     SRAM_D2 (xrw)       : ORIGIN = 0x30000000, LENGTH = 288K    /* AHB1 SRAM */

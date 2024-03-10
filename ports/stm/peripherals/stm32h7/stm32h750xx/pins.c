@@ -28,16 +28,16 @@
 #include "py/mphal.h"
 #include "peripherals/pins.h"
 
-// Todo: some pins do have ADCs, but the module isn't set up yet.
+// ADC added only to pins exposed on Daisy Seed board
 
-const mcu_pin_obj_t pin_PA00 = PIN(0, 0, NO_ADC);
-const mcu_pin_obj_t pin_PA01 = PIN(0, 1, NO_ADC);
-const mcu_pin_obj_t pin_PA02 = PIN(0, 2, NO_ADC);
-const mcu_pin_obj_t pin_PA03 = PIN(0, 3, NO_ADC);
-const mcu_pin_obj_t pin_PA04 = PIN(0, 4, NO_ADC);
-const mcu_pin_obj_t pin_PA05 = PIN(0, 5, NO_ADC);
-const mcu_pin_obj_t pin_PA06 = PIN(0, 6, NO_ADC);
-const mcu_pin_obj_t pin_PA07 = PIN(0, 7, NO_ADC);
+const mcu_pin_obj_t pin_PA00 = PIN(0, 0, ADC_INPUT(ADC_1, 16));
+const mcu_pin_obj_t pin_PA01 = PIN(0, 1, ADC_INPUT(ADC_1, 17));
+const mcu_pin_obj_t pin_PA02 = PIN(0, 2, ADC_INPUT(ADC_12, 14));
+const mcu_pin_obj_t pin_PA03 = PIN(0, 3, ADC_INPUT(ADC_12, 15));
+const mcu_pin_obj_t pin_PA04 = PIN(0, 4, ADC_INPUT(ADC_12, 18));
+const mcu_pin_obj_t pin_PA05 = PIN(0, 5, ADC_INPUT(ADC_12, 19));
+const mcu_pin_obj_t pin_PA06 = PIN(0, 6, ADC_INPUT(ADC_12, 3));
+const mcu_pin_obj_t pin_PA07 = PIN(0, 7, ADC_INPUT(ADC_12, 7));
 const mcu_pin_obj_t pin_PA08 = PIN(0, 8, NO_ADC);
 const mcu_pin_obj_t pin_PA09 = PIN(0, 9, NO_ADC);
 const mcu_pin_obj_t pin_PA10 = PIN(0, 10, NO_ADC);
@@ -48,7 +48,7 @@ const mcu_pin_obj_t pin_PA14 = PIN(0, 14, NO_ADC);
 const mcu_pin_obj_t pin_PA15 = PIN(0, 15, NO_ADC);
 
 const mcu_pin_obj_t pin_PB00 = PIN(1, 0, NO_ADC);
-const mcu_pin_obj_t pin_PB01 = PIN(1, 1, NO_ADC);
+const mcu_pin_obj_t pin_PB01 = PIN(1, 1, ADC_INPUT(ADC_12, 5));
 const mcu_pin_obj_t pin_PB02 = PIN(1, 2, NO_ADC);
 const mcu_pin_obj_t pin_PB03 = PIN(1, 3, NO_ADC);
 const mcu_pin_obj_t pin_PB04 = PIN(1, 4, NO_ADC);
@@ -64,11 +64,11 @@ const mcu_pin_obj_t pin_PB13 = PIN(1, 13, NO_ADC);
 const mcu_pin_obj_t pin_PB14 = PIN(1, 14, NO_ADC);
 const mcu_pin_obj_t pin_PB15 = PIN(1, 15, NO_ADC);
 
-const mcu_pin_obj_t pin_PC00 = PIN(2, 0, NO_ADC);
-const mcu_pin_obj_t pin_PC01 = PIN(2, 1, NO_ADC);
+const mcu_pin_obj_t pin_PC00 = PIN(2, 0, ADC_INPUT(ADC_12, 10));
+const mcu_pin_obj_t pin_PC01 = PIN(2, 1, ADC_INPUT(ADC_123, 11));
 const mcu_pin_obj_t pin_PC02 = PIN(2, 2, NO_ADC);
 const mcu_pin_obj_t pin_PC03 = PIN(2, 3, NO_ADC);
-const mcu_pin_obj_t pin_PC04 = PIN(2, 4, NO_ADC);
+const mcu_pin_obj_t pin_PC04 = PIN(2, 4, ADC_INPUT(ADC_12, 4));
 const mcu_pin_obj_t pin_PC05 = PIN(2, 5, NO_ADC);
 const mcu_pin_obj_t pin_PC06 = PIN(2, 6, NO_ADC);
 const mcu_pin_obj_t pin_PC07 = PIN(2, 7, NO_ADC);
@@ -182,29 +182,3 @@ const mcu_pin_obj_t pin_PI12 = PIN(8, 12, NO_ADC);
 const mcu_pin_obj_t pin_PI13 = PIN(8, 13, NO_ADC);
 const mcu_pin_obj_t pin_PI14 = PIN(8, 14, NO_ADC);
 const mcu_pin_obj_t pin_PI15 = PIN(8, 15, NO_ADC);
-
-const mcu_pin_obj_t pin_PJ00 = PIN(9, 0, NO_ADC);
-const mcu_pin_obj_t pin_PJ01 = PIN(9, 1, NO_ADC);
-const mcu_pin_obj_t pin_PJ02 = PIN(9, 2, NO_ADC);
-const mcu_pin_obj_t pin_PJ03 = PIN(9, 3, NO_ADC);
-const mcu_pin_obj_t pin_PJ04 = PIN(9, 4, NO_ADC);
-const mcu_pin_obj_t pin_PJ05 = PIN(9, 5, NO_ADC);
-const mcu_pin_obj_t pin_PJ06 = PIN(9, 6, NO_ADC);
-const mcu_pin_obj_t pin_PJ07 = PIN(9, 7, NO_ADC);
-const mcu_pin_obj_t pin_PJ08 = PIN(9, 8, NO_ADC);
-const mcu_pin_obj_t pin_PJ09 = PIN(9, 9, NO_ADC);
-const mcu_pin_obj_t pin_PJ10 = PIN(9, 10, NO_ADC);
-const mcu_pin_obj_t pin_PJ11 = PIN(9, 11, NO_ADC);
-const mcu_pin_obj_t pin_PJ12 = PIN(9, 12, NO_ADC);
-const mcu_pin_obj_t pin_PJ13 = PIN(9, 13, NO_ADC);
-const mcu_pin_obj_t pin_PJ14 = PIN(9, 14, NO_ADC);
-const mcu_pin_obj_t pin_PJ15 = PIN(9, 15, NO_ADC);
-
-const mcu_pin_obj_t pin_PK00 = PIN(10, 0, NO_ADC);
-const mcu_pin_obj_t pin_PK01 = PIN(10, 1, NO_ADC);
-const mcu_pin_obj_t pin_PK02 = PIN(10, 2, NO_ADC);
-const mcu_pin_obj_t pin_PK03 = PIN(10, 3, NO_ADC);
-const mcu_pin_obj_t pin_PK04 = PIN(10, 4, NO_ADC);
-const mcu_pin_obj_t pin_PK05 = PIN(10, 5, NO_ADC);
-const mcu_pin_obj_t pin_PK06 = PIN(10, 6, NO_ADC);
-const mcu_pin_obj_t pin_PK07 = PIN(10, 7, NO_ADC);

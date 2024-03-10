@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2020 Lucian Copeland for Adafruit Industries
+ * Copyright (c) 2024 snkYmkrct
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H743XX_PINS_H
-#define MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H743XX_PINS_H
+#ifndef MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H750XX_PINS_H
+#define MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H750XX_PINS_H
 
 extern const mcu_pin_obj_t pin_PA00;
 extern const mcu_pin_obj_t pin_PA01;
@@ -171,29 +171,5 @@ extern const mcu_pin_obj_t pin_PI12;
 extern const mcu_pin_obj_t pin_PI13;
 extern const mcu_pin_obj_t pin_PI14;
 extern const mcu_pin_obj_t pin_PI15;
-extern const mcu_pin_obj_t pin_PJ00;
-extern const mcu_pin_obj_t pin_PJ01;
-extern const mcu_pin_obj_t pin_PJ02;
-extern const mcu_pin_obj_t pin_PJ03;
-extern const mcu_pin_obj_t pin_PJ04;
-extern const mcu_pin_obj_t pin_PJ05;
-extern const mcu_pin_obj_t pin_PJ06;
-extern const mcu_pin_obj_t pin_PJ07;
-extern const mcu_pin_obj_t pin_PJ08;
-extern const mcu_pin_obj_t pin_PJ09;
-extern const mcu_pin_obj_t pin_PJ10;
-extern const mcu_pin_obj_t pin_PJ11;
-extern const mcu_pin_obj_t pin_PJ12;
-extern const mcu_pin_obj_t pin_PJ13;
-extern const mcu_pin_obj_t pin_PJ14;
-extern const mcu_pin_obj_t pin_PJ15;
-extern const mcu_pin_obj_t pin_PK00;
-extern const mcu_pin_obj_t pin_PK01;
-extern const mcu_pin_obj_t pin_PK02;
-extern const mcu_pin_obj_t pin_PK03;
-extern const mcu_pin_obj_t pin_PK04;
-extern const mcu_pin_obj_t pin_PK05;
-extern const mcu_pin_obj_t pin_PK06;
-extern const mcu_pin_obj_t pin_PK07;
 
-#endif // MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H743XX_PINS_H
+#endif // MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H750XX_PINS_H
