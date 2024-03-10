@@ -25,9 +25,6 @@ MEMORY
 _minimum_stack_size = 24K; /*TODO: this can probably be bigger, but how big?*/
 _minimum_heap_size = 16K;
 
-/* brainless copy paste for stack code. Results in ambiguous hard crash */
-/* _ld_default_stack_size = 20K; */
-
 /* Define tho top end of the stack.  The stack is full descending so begins just
    above last byte of RAM.  Note that EABI requires the stack to be 8-byte
    aligned for a call. */

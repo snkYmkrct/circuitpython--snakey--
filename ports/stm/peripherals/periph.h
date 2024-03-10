@@ -153,9 +153,9 @@ typedef struct {
 #endif
 
 #ifdef STM32H750xx
-#define HAS_DAC 0
-#define HAS_TRNG 0
-#define HAS_BASIC_TIM 0
+#define HAS_DAC 1
+#define HAS_TRNG 1
+#define HAS_BASIC_TIM 1
 #include "stm32h7/stm32h750xx/periph.h"
 #endif
 
