@@ -87,7 +87,11 @@ static uint32_t _cache_flash_addr = NO_CACHE;
 
 #if defined(STM32H7)
 // get the bank of a given flash address
+
 static uint32_t get_bank(uint32_t addr) {
+    #if defined(STM32H750xx) // H750 only has 1 bank
+        return FLASH_BANK_1;
+    #else
     if (READ_BIT(FLASH->OPTCR, FLASH_OPTCR_SWAP_BANK) == 0) {
         // no bank swap
         if (addr < (FLASH_BASE + FLASH_BANK_SIZE)) {
@@ -102,8 +106,9 @@ static uint32_t get_bank(uint32_t addr) {
         } else {
             return FLASH_BANK_1;
         }
-    }
-}
+    } 
+    #endif
+} 
 #endif
 
 uint32_t flash_get_sector_info(uint32_t addr, uint32_t *start_addr, uint32_t *size) {
