@@ -1,28 +1,8 @@
-/*
- * This file is part of the Micro Python project, http://micropython.org/
- *
- * The MIT License (MIT)
- *
- * Copyright (c) 2023 Scott Shawcroft for Adafruit Industries
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+// This file is part of the CircuitPython project: https://circuitpython.org
+//
+// SPDX-FileCopyrightText: Copyright (c) 2023 Scott Shawcroft for Adafruit Industries
+//
+// SPDX-License-Identifier: MIT
 
 #include "bindings/picodvi/Framebuffer.h"
 
@@ -44,7 +24,7 @@
 
 picodvi_framebuffer_obj_t *active_picodvi = NULL;
 
-STATIC PIO pio_instances[2] = {pio0, pio1};
+static PIO pio_instances[2] = {pio0, pio1};
 
 static void __not_in_flash_func(core1_main)(void) {
     // The MPU is reset before this starts.
@@ -144,10 +124,14 @@ void common_hal_picodvi_framebuffer_construct(picodvi_framebuffer_obj_t *self,
     bool color_framebuffer = color_depth >= 8;
     const struct dvi_timing *timing = NULL;
     if ((width == 640 && height == 480) ||
-        (width == 320 && height == 240)) {
+        (width == 320 && height == 240) ||
+        (width == 640 && height == 240)
+        ) {
         timing = &dvi_timing_640x480p_60hz;
     } else if ((width == 800 && height == 480) ||
-               (width == 400 && height == 240)) {
+               (width == 400 && height == 240) ||
+               (width == 800 && height == 240)
+               ) {
         timing = &dvi_timing_800x480p_60hz;
     } else {
         if (height != 480 && height != 240) {
@@ -223,16 +207,15 @@ void common_hal_picodvi_framebuffer_construct(picodvi_framebuffer_obj_t *self,
     size_t tmds_bufs_per_scanline;
     size_t scanline_width = width;
     if (color_framebuffer) {
-        dvi_vertical_repeat = 2;
         dvi_monochrome_tmds = false;
         tmds_bufs_per_scanline = 3;
         scanline_width *= 2;
     } else {
-        dvi_vertical_repeat = 1;
         dvi_monochrome_tmds = true;
         // One tmds buffer is used for all three color outputs.
         tmds_bufs_per_scanline = 1;
     }
+    dvi_vertical_repeat = timing->v_active_lines / self->height;
     self->pitch = (self->width * color_depth) / 8;
     // Align each row to words.
     if (self->pitch % sizeof(uint32_t) != 0) {
@@ -317,7 +300,7 @@ void common_hal_picodvi_framebuffer_construct(picodvi_framebuffer_obj_t *self,
     }
 }
 
-STATIC void _turn_off_dma(uint8_t channel) {
+static void _turn_off_dma(uint8_t channel) {
     dma_channel_config c = dma_channel_get_default_config(channel);
     channel_config_set_enable(&c, false);
     dma_channel_set_config(channel, &c, false /* trigger */);

@@ -1,0 +1,15 @@
+CIRCUITPY_CREATOR_ID =  0x19981000
+CIRCUITPY_CREATION_ID = 0x00BB0001
+
+IDF_TARGET = esp32c3
+
+CIRCUITPY_ESP_FLASH_MODE=dio
+CIRCUITPY_ESP_FLASH_FREQ=80m
+CIRCUITPY_ESP_FLASH_SIZE=4MB
+
+# Override partition layout to preserve compatibility because the default has changed.
+FLASH_SIZE_SDKCONFIG = esp-idf-config/sdkconfig-flash-4MB-no-uf2.defaults
+CIRCUITPY_DUALBANK = 1
+CIRCUITPY_BLEIO = 0
+
+CIRCUITPY_ESP_USB_SERIAL_JTAG = 1
