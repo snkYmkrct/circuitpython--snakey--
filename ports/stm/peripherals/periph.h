@@ -137,5 +137,3 @@ typedef struct {
 #define HAS_BASIC_TIM 1
 #include "stm32h7/stm32h750xx/periph.h"
 #endif
-
-#endif // __MICROPY_INCLUDED_STM32_PERIPHERALS_PERIPH_H__
