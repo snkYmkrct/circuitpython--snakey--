@@ -24,8 +24,7 @@
  * THE SOFTWARE.
  */
 
-#ifndef MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H750XX_PINS_H
-#define MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H750XX_PINS_H
+#pragma once
 
 extern const mcu_pin_obj_t pin_PA00;
 extern const mcu_pin_obj_t pin_PA01;
@@ -171,5 +170,3 @@ extern const mcu_pin_obj_t pin_PI12;
 extern const mcu_pin_obj_t pin_PI13;
 extern const mcu_pin_obj_t pin_PI14;
 extern const mcu_pin_obj_t pin_PI15;
-
-#endif // MICROPY_INCLUDED_STM32_PERIPHERALS_STM32H750XX_PINS_H

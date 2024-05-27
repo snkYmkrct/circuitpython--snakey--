@@ -29,17 +29,17 @@
 #define MICROPY_HW_BOARD_NAME       "DAISY_SEED"
 #define MICROPY_HW_MCU_NAME         "STM32H750xx"
 
-#define FLASH_PAGE_SIZE             (0x4000)
+// #define FLASH_PAGE_SIZE             (0x4000) // 256B for this flash
 
 // H7 and F7 MPU definitions
-#define CPY_FLASH_REGION_SIZE   ARM_MPU_REGION_SIZE_2MB//128KB
+#define CPY_FLASH_REGION_SIZE   ARM_MPU_REGION_SIZE_8MB
 #define CPY_ITCM_REGION_SIZE    ARM_MPU_REGION_SIZE_64KB
 #define CPY_DTCM_REGION_SIZE    ARM_MPU_REGION_SIZE_128KB
 #define CPY_SRAM_REGION_SIZE    ARM_MPU_REGION_SIZE_512KB
 #define CPY_SRAM_SUBMASK        0x00
 #define CPY_SRAM_START_ADDR     0x24000000
 
-#define HSE_VALUE ((uint32_t)8000000)
+#define HSE_VALUE ((uint32_t)16000000)
 #define LSE_VALUE ((uint32_t)32768)
-#define BOARD_HSE_SOURCE (RCC_HSE_BYPASS) // ST boards use the STLink clock signal
-#define BOARD_HAS_LOW_SPEED_CRYSTAL (1)
+#define BOARD_HSE_SOURCE (RCC_HSE_ON) // use external oscillator
+#define BOARD_HAS_LOW_SPEED_CRYSTAL (0)
