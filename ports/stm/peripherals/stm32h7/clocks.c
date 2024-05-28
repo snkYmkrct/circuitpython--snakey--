@@ -46,16 +46,16 @@ void stm32_peripherals_clocks_init(void) {
     RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
     #endif
     RCC_OscInitStruct.HSEState = BOARD_HSE_SOURCE;
-    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-    RCC_OscInitStruct.PLL.PLLM = HSE_VALUE / 2000000;
+    RCC_OscInitStruct.PLL.PLLState = BOARD_PLL_STATE;
+    RCC_OscInitStruct.PLL.PLLSource = BOARD_PLL_SOURCE;
+    RCC_OscInitStruct.PLL.PLLM = CPY_CLK_PLLM;
     RCC_OscInitStruct.PLL.PLLN = CPY_CLK_PLLN;
     RCC_OscInitStruct.PLL.PLLP = CPY_CLK_PLLP;
     RCC_OscInitStruct.PLL.PLLQ = CPY_CLK_PLLQ;
-    RCC_OscInitStruct.PLL.PLLR = 2;
-    RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_1;
-    RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
-    RCC_OscInitStruct.PLL.PLLFRACN = 0;
+    RCC_OscInitStruct.PLL.PLLR = CPY_CLK_PLLR;
+    RCC_OscInitStruct.PLL.PLLRGE = CPY_CLK_PLLRGE;
+    RCC_OscInitStruct.PLL.PLLVCOSEL = CPY_CLK_PLLVCOSEL;
+    RCC_OscInitStruct.PLL.PLLFRACN = CPY_CLK_PLLFRACN;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
         // Clock issues are too problematic to even attempt recovery.
         // If you end up here, check whether your LSE settings match your board.

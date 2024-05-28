@@ -35,6 +35,9 @@
 #ifndef CPY_CLK_VSCALE
 #define CPY_CLK_VSCALE (PWR_REGULATOR_VOLTAGE_SCALE0)
 #endif
+#ifndef CPY_CLK_PLLM
+#define CPY_CLK_PLLM (1)
+#endif
 #ifndef CPY_CLK_PLLN
 #define CPY_CLK_PLLN (50)
 #endif
@@ -43,6 +46,18 @@
 #endif
 #ifndef CPY_CLK_PLLQ
 #define CPY_CLK_PLLQ (4)
+#endif
+#ifndef CPY_CLK_PLLR
+#define CPY_CLK_PLLR (2)
+#endif
+#ifndef CPY_CLK_PLLRGE
+#define CPY_CLK_PLLRGE (RCC_PLL1VCIRANGE_3)
+#endif
+#ifndef CPY_CLK_PLLVCOSEL
+#define CPY_CLK_PLLVCOSEL (RCC_PLL1VCOWIDE)
+#endif
+#ifndef CPY_CLK_PLLFRACN
+#define CPY_CLK_PLLFRACN (0)
 #endif
 #ifndef CPY_CLK_AHBDIV
 #define CPY_CLK_AHBDIV (RCC_HCLK_DIV2)
@@ -67,4 +82,10 @@
 #endif
 #ifndef BOARD_HSE_SOURCE
 #define BOARD_HSE_SOURCE (RCC_HSE_ON)
+#endif
+#ifndef BOARD_PLL_STATE
+#define BOARD_PLL_STATE (RCC_PLL_ON)
+#endif
+#ifndef BOARD_PLL_SOURCE
+#define BOARD_PLL_SOURCE (RCC_PLLSOURCE_HSE)
 #endif
