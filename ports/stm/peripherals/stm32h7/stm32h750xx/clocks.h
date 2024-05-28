@@ -36,13 +36,13 @@
 #define CPY_CLK_VSCALE (PWR_REGULATOR_VOLTAGE_SCALE0)
 #endif
 #ifndef CPY_CLK_PLLN
-#define CPY_CLK_PLLN (480)
+#define CPY_CLK_PLLN (50)
 #endif
 #ifndef CPY_CLK_PLLP
 #define CPY_CLK_PLLP (2)
 #endif
 #ifndef CPY_CLK_PLLQ
-#define CPY_CLK_PLLQ (20)
+#define CPY_CLK_PLLQ (4)
 #endif
 #ifndef CPY_CLK_AHBDIV
 #define CPY_CLK_AHBDIV (RCC_HCLK_DIV2)
@@ -60,7 +60,7 @@
 #define CPY_CLK_APB4DIV (RCC_APB4_DIV2)
 #endif
 #ifndef CPY_CLK_FLASH_LATENCY
-#define CPY_CLK_FLASH_LATENCY (FLASH_LATENCY_4)
+#define CPY_CLK_FLASH_LATENCY (FLASH_LATENCY_2)
 #endif
 #ifndef CPY_CLK_USB_USES_AUDIOPLL
 #define CPY_CLK_USB_USES_AUDIOPLL (0)
