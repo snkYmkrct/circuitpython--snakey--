@@ -29,6 +29,8 @@
 #define MICROPY_HW_BOARD_NAME       "DAISY_SEED"
 #define MICROPY_HW_MCU_NAME         "STM32H750xx"
 
+#define MICROPY_HW_LED_STATUS (&pin_PC07)
+
 // #define FLASH_PAGE_SIZE             (0x4000) // 256B for this flash
 
 // H7 and F7 MPU definitions
@@ -43,3 +45,6 @@
 #define LSE_VALUE ((uint32_t)32768)
 #define BOARD_HSE_SOURCE (RCC_HSE_ON) // use external oscillator
 #define BOARD_HAS_LOW_SPEED_CRYSTAL (0)
+
+#define CIRCUITPY_CONSOLE_UART_TX (&pin_PB09)
+#define CIRCUITPY_CONSOLE_UART_RX (&pin_PB08)

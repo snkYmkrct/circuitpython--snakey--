@@ -132,8 +132,8 @@ const mcu_periph_obj_t mcu_spi_miso_list[16] = {
 
 // UART
 
-USART_TypeDef *mcu_uart_banks[MAX_UART] = {USART1, USART2, USART3, UART4, UART5, USART6, UART7, UART8};
-bool mcu_uart_has_usart[MAX_UART] = {true, true, true, true, true, true, true, true};
+USART_TypeDef *mcu_uart_banks[MAX_UART] = {USART1, USART2, USART3, UART4, UART5, USART6, UART7, UART8, LPUART1};
+bool mcu_uart_has_usart[MAX_UART] = {true, true, true, false, false, true, false, false, false};
 
 const mcu_periph_obj_t mcu_uart_tx_list[25] = {
     PERIPH(4, 8, &pin_PA00),
