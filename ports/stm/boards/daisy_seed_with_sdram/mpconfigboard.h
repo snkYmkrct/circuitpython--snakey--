@@ -31,8 +31,6 @@
 
 #define MICROPY_HW_LED_STATUS (&pin_PC07)
 
-// #define FLASH_PAGE_SIZE             (0x4000) // 256B for this flash
-
 // H7 and F7 MPU definitions
 #define CPY_FLASH_REGION_SIZE   ARM_MPU_REGION_SIZE_8MB
 #define CPY_ITCM_REGION_SIZE    ARM_MPU_REGION_SIZE_64KB
@@ -42,9 +40,14 @@
 #define CPY_SRAM_START_ADDR     0x24000000
 
 #define HSE_VALUE ((uint32_t)16000000)
-#define LSE_VALUE ((uint32_t)32768)
 #define BOARD_HSE_SOURCE (RCC_HSE_ON) // use external oscillator
 #define BOARD_HAS_LOW_SPEED_CRYSTAL (0)
 
 #define CIRCUITPY_CONSOLE_UART_TX (&pin_PB09)
 #define CIRCUITPY_CONSOLE_UART_RX (&pin_PB08)
+
+// USB
+#define BOARD_NO_USB_OTG_ID_SENSE (1)
+
+// for RNG not audio
+#define CPY_CLK_USB_USES_AUDIOPLL (1)

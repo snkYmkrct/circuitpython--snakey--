@@ -92,8 +92,28 @@ void stm32_peripherals_clocks_init(void) {
     #else
     PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_PLL;
     #endif
-    HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct);
-
+    #ifdef STM32H750xx
+    // USB
+    PeriphClkInitStruct.PLL3.PLL3M = 1;
+    PeriphClkInitStruct.PLL3.PLL3N = 12;
+    PeriphClkInitStruct.PLL3.PLL3P = 2;
+    PeriphClkInitStruct.PLL3.PLL3Q = 4;
+    PeriphClkInitStruct.PLL3.PLL3R = 2;
+    PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
+    PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
+    PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_PLL3;
+    // RNG
+    PeriphClkInitStruct.PeriphClockSelection = PeriphClkInitStruct.PeriphClockSelection | RCC_PERIPHCLK_RNG;
+    PeriphClkInitStruct.RngClockSelection = RCC_RNGCLKSOURCE_HSI48;
+    // RTC
+    PeriphClkInitStruct.PeriphClockSelection = PeriphClkInitStruct.PeriphClockSelection | RCC_PERIPHCLK_RTC;
+    PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+    #endif
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
+        while (1) {
+            ;
+        }
+    }
     // Enable USB Voltage detector
     HAL_PWREx_EnableUSBVoltageDetector();
 }
