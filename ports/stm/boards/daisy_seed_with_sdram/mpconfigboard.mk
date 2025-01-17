@@ -3,9 +3,8 @@ USB_PID = 0x5740
 USB_PRODUCT = "Daisy Seed"
 USB_MANUFACTURER = "STMicroelectronics"
 
-# INTERNAL_FLASH_FILESYSTEM = 1
-QSPI_FLASH_FILESYSTEM = 1
-# EXTERNAL_FLASH_DEVICES = N25Q128A
+# Small FS created on half of the internal flash -- other half is reserved for the H750 bootloader
+INTERNAL_FLASH_FILESYSTEM = 1
 
 MCU_SERIES = H7
 MCU_VARIANT = STM32H750xx
