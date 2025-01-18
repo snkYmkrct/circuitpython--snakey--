@@ -10,8 +10,13 @@
 #include "py/mphal.h"
 #include "py/runtime.h"
 #include "common-hal/microcontroller/Pin.h"
+#ifdef STM32H750xx
+#include "stm32h7xx_hal.h"
+#include "stm32h7xx_ll_gpio.h"
+#else
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_ll_gpio.h"
+#endif
 #include "supervisor/port.h"
 
 uint64_t next_start_raw_ticks = 0;

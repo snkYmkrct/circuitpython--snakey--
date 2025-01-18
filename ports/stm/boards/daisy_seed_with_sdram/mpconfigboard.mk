@@ -12,3 +12,5 @@ MCU_PACKAGE = UFBGA176
 
 LD_COMMON = boards/common_tcm.ld
 LD_FILE = boards/STM32H750.ld
+
+CIRCUITPY_NEOPIXEL_WRITE = 0
