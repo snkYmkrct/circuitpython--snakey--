@@ -42,6 +42,7 @@
 void NVIC_SystemReset(void) NORETURN;
 
 #if (CPY_STM32H7) || (CPY_STM32F7)
+#include "stm32h750xx.h"
 
 // Device memories must be accessed in order.
 #define DEVICE 2
@@ -139,6 +140,17 @@ __attribute__((used, naked)) void Reset_Handler(void) {
     SCB->VTOR = 0x90000000u; /* We relocate vector table to the QSPI sector 1 */
     __DSB(); /* ARM says to use a DSB instruction just after relocating VTOR */
     /* SystemInit call is not necessary, initializations are done in the H750 special bootloader */
+
+    #if defined(__ICACHE_PRESENT) && (__ICACHE_PRESENT == 1U)
+    /* Enable I cache. */
+    SCB_EnableICache();
+    #endif /* __ICACHE_PRESENT */
+
+    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+    /* Enable D cache. */
+    SCB_EnableDCache();
+    #endif /* __DCACHE_PRESENT */
+
     #else
     SystemInit();
     #endif
