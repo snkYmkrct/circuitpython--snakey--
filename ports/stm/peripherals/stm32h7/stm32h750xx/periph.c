@@ -9,8 +9,10 @@
 #include "peripherals/pins.h"
 #include "peripherals/periph.h"
 
+// See alternate functions tables in the STM32H750xx datasheet
+
 // I2C
-I2C_TypeDef *mcu_i2c_banks[4] = {I2C1, I2C2, I2C3, I2C4};
+I2C_TypeDef *mcu_i2c_banks[MAX_I2C] = {I2C1, I2C2, I2C3, I2C4};
 
 const mcu_periph_obj_t mcu_i2c_sda_list[12] = {
     PERIPH(1, 4, &pin_PB07),
@@ -44,9 +46,9 @@ const mcu_periph_obj_t mcu_i2c_scl_list[12] = {
 
 // SPI
 
-SPI_TypeDef *mcu_spi_banks[6] = {SPI1, SPI2, SPI3, SPI4, SPI5, SPI6};
+SPI_TypeDef *mcu_spi_banks[MAX_SPI] = {SPI1, SPI2, SPI3, SPI4, SPI5, SPI6};
 
-const mcu_periph_obj_t mcu_spi_sck_list[19] = {
+const mcu_periph_obj_t mcu_spi_sck_list[18] = {
     PERIPH(1, 5, &pin_PA05),
     PERIPH(6, 8, &pin_PA05),
     PERIPH(2, 5, &pin_PA09),
@@ -65,10 +67,9 @@ const mcu_periph_obj_t mcu_spi_sck_list[19] = {
     PERIPH(6, 5, &pin_PG13),
     PERIPH(5, 5, &pin_PH06),
     PERIPH(2, 5, &pin_PI01),
-    PERIPH(5, 5, &pin_PI00),
 };
 
-const mcu_periph_obj_t mcu_spi_mosi_list[19] = {
+const mcu_periph_obj_t mcu_spi_mosi_list[18] = {
     PERIPH(1, 5, &pin_PA07),
     PERIPH(6, 8, &pin_PA07),
     PERIPH(3, 7, &pin_PB02),
@@ -87,10 +88,9 @@ const mcu_periph_obj_t mcu_spi_mosi_list[19] = {
     PERIPH(5, 5, &pin_PF11),
     PERIPH(6, 5, &pin_PG14),
     PERIPH(2, 5, &pin_PI03),
-    PERIPH(5, 5, &pin_PI10),
 };
 
-const mcu_periph_obj_t mcu_spi_miso_list[16] = {
+const mcu_periph_obj_t mcu_spi_miso_list[15] = {
     PERIPH(1, 5, &pin_PA06),
     PERIPH(6, 8, &pin_PA06),
     PERIPH(1, 5, &pin_PB04),
@@ -106,15 +106,15 @@ const mcu_periph_obj_t mcu_spi_miso_list[16] = {
     PERIPH(6, 5, &pin_PG12),
     PERIPH(5, 5, &pin_PH07),
     PERIPH(2, 5, &pin_PI02),
-    PERIPH(5, 5, &pin_PI11),
 };
 
 // UART
 
-USART_TypeDef *mcu_uart_banks[MAX_UART] = {USART1, USART2, USART3, UART4, UART5, USART6, UART7, UART8, LPUART1};
-bool mcu_uart_has_usart[MAX_UART] = {true, true, true, false, false, true, false, false, false};
+USART_TypeDef *mcu_uart_banks[MAX_UART] = {USART1, USART2, USART3, UART4, UART5, USART6, UART7, UART8};
+// circuitpython doesn't implement USART
+// bool mcu_uart_has_usart[MAX_UART] = {true, true, true, false, false, true, false, false, false};
 
-const mcu_periph_obj_t mcu_uart_tx_list[25] = {
+const mcu_periph_obj_t mcu_uart_tx_list[24] = {
     PERIPH(4, 8, &pin_PA00),
     PERIPH(2, 7, &pin_PA02),
     PERIPH(1, 7, &pin_PA09),
@@ -138,11 +138,10 @@ const mcu_periph_obj_t mcu_uart_tx_list[25] = {
     PERIPH(7, 7, &pin_PE08),
     PERIPH(7, 7, &pin_PF07),
     PERIPH(6, 7, &pin_PG14),
-    PERIPH(4, 8, &pin_PI13),
-    PERIPH(8, 8, &pin_PI08),
+    PERIPH(4, 8, &pin_PH13),
 };
 
-const mcu_periph_obj_t mcu_uart_rx_list[26] = {
+const mcu_periph_obj_t mcu_uart_rx_list[25] = {
     PERIPH(4, 8, &pin_PA01),
     PERIPH(2, 7, &pin_PA03),
     PERIPH(7, 11, &pin_PA08),
@@ -166,9 +165,8 @@ const mcu_periph_obj_t mcu_uart_rx_list[26] = {
     PERIPH(7, 7, &pin_PE07),
     PERIPH(7, 7, &pin_PF06),
     PERIPH(6, 7, &pin_PG09),
-    PERIPH(4, 8, &pin_PI14),
+    PERIPH(4, 8, &pin_PH14),
     PERIPH(4, 8, &pin_PI09),
-    PERIPH(8, 8, &pin_PI09),
 };
 
 // Timers
