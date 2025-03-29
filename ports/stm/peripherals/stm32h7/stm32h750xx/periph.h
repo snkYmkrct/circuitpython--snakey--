@@ -30,3 +30,13 @@ extern const mcu_periph_obj_t mcu_uart_rx_list[25];
 #define TIM_BANK_ARRAY_LEN 14
 #define TIM_PIN_ARRAY_LEN 58
 extern TIM_TypeDef *mcu_tim_banks[TIM_BANK_ARRAY_LEN];
+
+// SDIO - H750 has a MMC interface that includes SDIO
+extern SDMMC_TypeDef *mcu_sdio_banks[1];
+
+extern const mcu_periph_obj_t mcu_sdio_clock_list[1];
+extern const mcu_periph_obj_t mcu_sdio_command_list[1];
+extern const mcu_periph_obj_t mcu_sdio_data0_list[1];
+extern const mcu_periph_obj_t mcu_sdio_data1_list[1];
+extern const mcu_periph_obj_t mcu_sdio_data2_list[1];
+extern const mcu_periph_obj_t mcu_sdio_data3_list[1];
