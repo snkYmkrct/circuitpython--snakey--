@@ -133,6 +133,12 @@ void common_hal_sdioio_sdcard_construct(sdioio_sdcard_obj_t *self,
     HAL_GPIO_Init(pin_port(clock->port), &GPIO_InitStruct);
 
     #ifdef STM32H750xx
+    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SDMMC;
+    PeriphClkInitStruct.SdmmcClockSelection = RCC_SDMMCCLKSOURCE_PLL;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
+        mp_raise_ValueError_varg(MP_ERROR_TEXT("MMC/SDIO Clock Error %x"));
+    }
     __HAL_RCC_SDMMC1_CLK_ENABLE();
 
     self->handle.Init.ClockDiv = SDMMC_NSPEED_CLK_DIV;
