@@ -242,7 +242,13 @@ int common_hal_sdioio_sdcard_writeblocks(sdioio_sdcard_obj_t *self, uint32_t sta
     wait_write_complete(self);
     self->state_programming = true;
     common_hal_mcu_disable_interrupts();
-    HAL_StatusTypeDef r = HAL_SD_WriteBlocks(&self->handle, bufinfo->buf, start_block, bufinfo->len / 512, 1000);
+    #ifdef STM32H750xx
+    // longer timeouts needed because code executing from QSPI is slower
+    uint32_t time_out = SDMMC_DATATIMEOUT;
+    #else
+    uint32_t time_out = 1000;
+    #endif
+    HAL_StatusTypeDef r = HAL_SD_WriteBlocks(&self->handle, bufinfo->buf, start_block, bufinfo->len / 512, time_out);
     common_hal_mcu_enable_interrupts();
     if (r != HAL_OK) {
         return -EIO;
@@ -255,7 +261,13 @@ int common_hal_sdioio_sdcard_readblocks(sdioio_sdcard_obj_t *self, uint32_t star
     check_whole_block(bufinfo);
     wait_write_complete(self);
     common_hal_mcu_disable_interrupts();
-    HAL_StatusTypeDef r = HAL_SD_ReadBlocks(&self->handle, bufinfo->buf, start_block, bufinfo->len / 512, 1000);
+    #ifdef STM32H750xx
+    // longer timeouts needed because code executing from QSPI is slower
+    uint32_t time_out = SDMMC_DATATIMEOUT;
+    #else
+    uint32_t time_out = 1000;
+    #endif
+    HAL_StatusTypeDef r = HAL_SD_ReadBlocks(&self->handle, bufinfo->buf, start_block, bufinfo->len / 512, time_out);
     common_hal_mcu_enable_interrupts();
     if (r != HAL_OK) {
         return -EIO;

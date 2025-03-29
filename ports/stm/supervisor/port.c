@@ -146,6 +146,16 @@ __attribute__((used, naked)) void Reset_Handler(void) {
        start execution of the firmware from the external flash.
        It also makes the SystemInit() call not necessary for this chip.
     */
+    #if defined(__ICACHE_PRESENT) && (__ICACHE_PRESENT == 1U)
+    /* Enable I cache. */
+    SCB_EnableICache();
+    #endif /* __ICACHE_PRESENT */
+
+    #if defined(__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+    /* Enable D cache. */
+    SCB_EnableDCache();
+    #endif /* __DCACHE_PRESENT */
+
     #else
     SystemInit();
     #endif
