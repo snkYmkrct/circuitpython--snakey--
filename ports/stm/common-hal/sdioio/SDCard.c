@@ -104,7 +104,11 @@ void common_hal_sdioio_sdcard_construct(sdioio_sdcard_obj_t *self,
     uint8_t num_data, const mcu_pin_obj_t **data, uint32_t frequency) {
 
     int periph_index = check_pins(self, clock, command, num_data, data);
+    #ifdef STM32H750xx
+    SDMMC_TypeDef *SDMMCx = mcu_sdio_banks[periph_index - 1];
+    #else
     SDIO_TypeDef *SDIOx = mcu_sdio_banks[periph_index - 1];
+    #endif
 
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
@@ -128,6 +132,16 @@ void common_hal_sdioio_sdcard_construct(sdioio_sdcard_obj_t *self,
     GPIO_InitStruct.Pin = pin_mask(clock->number);
     HAL_GPIO_Init(pin_port(clock->port), &GPIO_InitStruct);
 
+    #ifdef STM32H750xx
+    __HAL_RCC_SDMMC1_CLK_ENABLE();
+
+    self->handle.Init.ClockDiv = SDMMC_NSPEED_CLK_DIV;
+    self->handle.Init.ClockEdge = SDMMC_CLOCK_EDGE_RISING;
+    self->handle.Init.ClockPowerSave = SDMMC_CLOCK_POWER_SAVE_DISABLE;
+    self->handle.Init.BusWide = SDMMC_BUS_WIDE_1B;
+    self->handle.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
+    self->handle.Instance = SDMMCx;
+    #else
     __HAL_RCC_SDIO_CLK_ENABLE();
 
     self->handle.Init.ClockDiv = SDIO_TRANSFER_CLK_DIV;
@@ -137,6 +151,7 @@ void common_hal_sdioio_sdcard_construct(sdioio_sdcard_obj_t *self,
     self->handle.Init.BusWide = SDIO_BUS_WIDE_1B;
     self->handle.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
     self->handle.Instance = SDIOx;
+    #endif
 
     HAL_StatusTypeDef r = HAL_SD_Init(&self->handle);
     if (r != HAL_OK) {
@@ -150,9 +165,14 @@ void common_hal_sdioio_sdcard_construct(sdioio_sdcard_obj_t *self,
     }
 
     self->num_data = 1;
+    #ifdef STM32H750xx
+    uint32_t bus_wide_opt = SDMMC_BUS_WIDE_4B;
+    #else
+    uint32_t bus_wide_opt = SDIO_BUS_WIDE_4B;
+    #endif
     if (num_data == 4) {
-        if ((r = HAL_SD_ConfigWideBusOperation(&self->handle, SDIO_BUS_WIDE_4B)) == HAL_SD_ERROR_NONE) {
-            self->handle.Init.BusWide = SDIO_BUS_WIDE_4B;
+        if ((r = HAL_SD_ConfigWideBusOperation(&self->handle, bus_wide_opt)) == HAL_SD_ERROR_NONE) {
+            self->handle.Init.BusWide = bus_wide_opt;
             self->num_data = 4;
         } else {
         }
