@@ -171,21 +171,24 @@ const mcu_periph_obj_t mcu_uart_rx_list[25] = {
 
 // Timers
 // TIM6 and TIM7 are basic timers that are only used by DAC, and don't have pins
-TIM_TypeDef *mcu_tim_banks[14] = {TIM1, TIM2, TIM3, TIM4, TIM5, NULL, NULL, TIM8, NULL, NULL,
-                                  NULL, TIM12, TIM13, TIM14};
-
-const mcu_tim_pin_obj_t mcu_tim_pin_list[58] = {
+TIM_TypeDef *mcu_tim_banks[TIM_BANK_ARRAY_LEN] = {TIM1, TIM2, TIM3, TIM4, TIM5, NULL, NULL, TIM8,
+                                                  NULL, NULL, NULL, TIM12, TIM13, TIM14, TIM15, TIM16, TIM17};
+const mcu_tim_pin_obj_t mcu_tim_pin_list[TIM_PIN_ARRAY_LEN] = {
     TIM(2, 1, 1, &pin_PA00),
     TIM(5, 2, 1, &pin_PA00),
     TIM(2, 1, 2, &pin_PA01),
     TIM(5, 2, 2, &pin_PA01),
     TIM(2, 1, 3, &pin_PA02),
     TIM(5, 2, 3, &pin_PA02),
+    TIM(15, 4, 1, &pin_PA02),
     TIM(2, 1, 4, &pin_PA03),
     TIM(5, 2, 4, &pin_PA03),
+    TIM(15, 4, 2, &pin_PA03),
     TIM(2, 1, 1, &pin_PA05),
     TIM(3, 2, 1, &pin_PA06),
+    TIM(13, 9, 1, &pin_PA06),
     TIM(3, 2, 2, &pin_PA07),
+    TIM(14, 9, 1, &pin_PA07),
     TIM(1, 1, 1, &pin_PA08),
     TIM(1, 1, 2, &pin_PA09),
     TIM(1, 1, 3, &pin_PA10),
@@ -202,6 +205,8 @@ const mcu_tim_pin_obj_t mcu_tim_pin_list[58] = {
     TIM(4, 2, 4, &pin_PB09),
     TIM(2, 1, 3, &pin_PB10),
     TIM(2, 1, 4, &pin_PB11),
+    TIM(12, 2, 1, &pin_PB14),
+    TIM(12, 2, 2, &pin_PB15),
     TIM(3, 2, 1, &pin_PC06),
     TIM(8, 3, 1, &pin_PC06),
     TIM(3, 2, 2, &pin_PC07),
@@ -214,29 +219,30 @@ const mcu_tim_pin_obj_t mcu_tim_pin_list[58] = {
     TIM(4, 2, 2, &pin_PD13),
     TIM(4, 2, 3, &pin_PD14),
     TIM(4, 2, 4, &pin_PD15),
+    TIM(15, 4, 1, &pin_PE05),
+    TIM(15, 4, 2, &pin_PE06),
     TIM(1, 1, 1, &pin_PE09),
     TIM(1, 1, 2, &pin_PE11),
     TIM(1, 1, 3, &pin_PE13),
     TIM(1, 1, 4, &pin_PE14),
-    TIM(5, 2, 1, &pin_PI10),
-    TIM(5, 2, 2, &pin_PI11),
-    TIM(5, 2, 3, &pin_PI12),
+    TIM(16, 1, 1, &pin_PF06),
+    TIM(17, 1, 1, &pin_PF07),
+    TIM(13, 9, 1, &pin_PF08),
+    TIM(14, 9, 1, &pin_PF09),
+    TIM(12, 2, 1, &pin_PH06),
+    TIM(12, 2, 2, &pin_PH09),
+    TIM(5, 2, 1, &pin_PH10),
+    TIM(5, 2, 2, &pin_PH11),
+    TIM(5, 2, 3, &pin_PH12),
     TIM(5, 2, 4, &pin_PI00),
     TIM(8, 3, 4, &pin_PI02),
     TIM(8, 3, 1, &pin_PI05),
     TIM(8, 3, 2, &pin_PI06),
     TIM(8, 3, 3, &pin_PI07),
-    TIM(8, 3, 2, &pin_PI06),
-    TIM(8, 3, 1, &pin_PI08),
-    TIM(1, 1, 3, &pin_PI09),
-    TIM(8, 3, 2, &pin_PI10),
-    TIM(1, 1, 2, &pin_PI11),
-    TIM(8, 3, 3, &pin_PI00),
-    TIM(1, 1, 1, &pin_PI01),
 };
 
 // SDIO - H750 has a MMC interface that includes SDIO
-SDMMC_TypeDef *mcu_sdio_banks[1] = {SDIO};
+SDMMC_TypeDef *mcu_sdio_banks[1] = {SDMMC1};
 
 const mcu_periph_obj_t mcu_sdio_clock_list[1] = {
     PERIPH(1, 12, &pin_PC12),
