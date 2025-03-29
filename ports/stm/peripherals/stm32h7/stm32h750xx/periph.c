@@ -171,7 +171,6 @@ const mcu_periph_obj_t mcu_uart_rx_list[25] = {
 
 // Timers
 // TIM6 and TIM7 are basic timers that are only used by DAC, and don't have pins
-// TODO: H7 has more timers than this, but are they tied to pins?
 TIM_TypeDef *mcu_tim_banks[14] = {TIM1, TIM2, TIM3, TIM4, TIM5, NULL, NULL, TIM8, NULL, NULL,
                                   NULL, TIM12, TIM13, TIM14};
 
@@ -234,4 +233,26 @@ const mcu_tim_pin_obj_t mcu_tim_pin_list[58] = {
     TIM(1, 1, 2, &pin_PI11),
     TIM(8, 3, 3, &pin_PI00),
     TIM(1, 1, 1, &pin_PI01),
+};
+
+// SDIO - H750 has a MMC interface that includes SDIO
+SDMMC_TypeDef *mcu_sdio_banks[1] = {SDIO};
+
+const mcu_periph_obj_t mcu_sdio_clock_list[1] = {
+    PERIPH(1, 12, &pin_PC12),
+};
+const mcu_periph_obj_t mcu_sdio_command_list[1] = {
+    PERIPH(1, 12, &pin_PD02),
+};
+const mcu_periph_obj_t mcu_sdio_data0_list[1] = {
+    PERIPH(1, 12, &pin_PC08),
+};
+const mcu_periph_obj_t mcu_sdio_data1_list[1] = {
+    PERIPH(1, 12, &pin_PC09),
+};
+const mcu_periph_obj_t mcu_sdio_data2_list[1] = {
+    PERIPH(1, 12, &pin_PC10),
+};
+const mcu_periph_obj_t mcu_sdio_data3_list[1] = {
+    PERIPH(1, 12, &pin_PC11),
 };
