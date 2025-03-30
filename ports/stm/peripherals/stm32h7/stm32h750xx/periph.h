@@ -41,3 +41,5 @@ extern const mcu_periph_obj_t mcu_sdio_data0_list[1];
 extern const mcu_periph_obj_t mcu_sdio_data1_list[1];
 extern const mcu_periph_obj_t mcu_sdio_data2_list[1];
 extern const mcu_periph_obj_t mcu_sdio_data3_list[1];
+// SDRam
+extern const mcu_periph_obj_t sdram_pin_list[57];
