@@ -363,6 +363,9 @@ void tim_clock_enable(uint32_t mask) {
         __HAL_RCC_TIM14_CLK_ENABLE();
     }
     #endif
+
+    #ifdef STM32H750xx
+    // only enabled on the H750 board for now
     #ifdef TIM15
     if (mask & (1 << 14)) {
         __HAL_RCC_TIM15_CLK_ENABLE();
@@ -377,6 +380,7 @@ void tim_clock_enable(uint32_t mask) {
     if (mask & (1 << 16)) {
         __HAL_RCC_TIM17_CLK_ENABLE();
     }
+    #endif
     #endif
 }
 
@@ -442,6 +446,9 @@ void tim_clock_disable(uint32_t mask) {
         __HAL_RCC_TIM14_CLK_DISABLE();
     }
     #endif
+
+    #ifdef STM32H750xx
+    // only enabled on the H750 board for now
     #ifdef TIM15
     if (mask & (1 << 14)) {
         __HAL_RCC_TIM15_CLK_DISABLE();
@@ -456,6 +463,7 @@ void tim_clock_disable(uint32_t mask) {
     if (mask & (1 << 16)) {
         __HAL_RCC_TIM17_CLK_DISABLE();
     }
+    #endif
     #endif
 
 }
@@ -551,6 +559,8 @@ void TIM8_TRG_COM_TIM14_IRQHandler(void) {
 }
 #endif
 
+#ifdef STM32H750xx
+// only enabled on the H750 board for now
 #ifdef TIM15
 void TIM15_IRQHandler(void) {
     callback_router(15);
@@ -567,4 +577,5 @@ void TIM16_IRQHandler(void) {
 void TIM17_IRQHandler(void) {
     callback_router(17);
 }
+#endif
 #endif
