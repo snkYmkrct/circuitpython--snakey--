@@ -145,7 +145,10 @@ void common_hal_sdioio_sdcard_construct(sdioio_sdcard_obj_t *self,
     self->handle.Init.ClockEdge = SDMMC_CLOCK_EDGE_RISING;
     self->handle.Init.ClockPowerSave = SDMMC_CLOCK_POWER_SAVE_DISABLE;
     self->handle.Init.BusWide = SDMMC_BUS_WIDE_1B;
-    self->handle.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
+    // For the SDMMC controller Hardware Flow Control needs to be enabled
+    // at the default speed of 25MHz, in order to avoid FIFO underrun (TX mode)
+    // and overrun (RX mode) errors.
+    self->handle.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_ENABLE;
     self->handle.Instance = SDMMCx;
     #else
     __HAL_RCC_SDIO_CLK_ENABLE();
